@@ -39,6 +39,7 @@ def generate_courses(record_count: int) -> List[Dict]:
             {
                 "course[name]": fake.catch_phrase(),
                 "course[course_code]": fake.bothify("?#######"),
+                "offer": "true",
             }
         )
     return courses
