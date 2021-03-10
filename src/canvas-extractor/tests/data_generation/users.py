@@ -118,8 +118,7 @@ def generate_and_load_users(account: Account, record_count: int) -> List[User]:
 
     result: List[User] = []
     try:
-        section_result = load_users(account, users)
-        result.extend(section_result)
+        result = load_users(account, users)
     except Exception as ex:
         logger.exception(ex)
 
