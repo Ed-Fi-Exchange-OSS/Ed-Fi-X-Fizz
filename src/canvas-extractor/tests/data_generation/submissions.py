@@ -35,10 +35,6 @@ def load_submissions(assignment: Assignment, submissions: List[Dict]) -> List[Su
     List[Submission]
         A list of Canvas SDK Submission objects representing the created submissions
     """
-    assert (
-        len(submissions) > 0 and len(submissions) < 51
-    ), "Number of submissions must be between 1 and 50"
-
     logger.info("Creating %s submissions via Canvas API", len(submissions))
 
     result: List[Submission] = []

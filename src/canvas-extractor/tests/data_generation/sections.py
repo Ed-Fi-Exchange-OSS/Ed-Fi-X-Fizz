@@ -81,10 +81,6 @@ def load_sections(course: Course, sections: List[Dict]) -> List[Section]:
     List[Section]
         A list of Canvas SDK Section objects representing the created sections
     """
-    assert (
-        len(sections) > 0 and len(sections) < 51
-    ), "Number of sections must be between 1 and 50"
-
     logger.info("Creating %s sections via Canvas API", len(sections))
 
     result: List[Section] = []
@@ -118,9 +114,6 @@ def generate_and_load_sections(
     assert (
         record_count > 0
     ), "Number of sections to generate per course must be greater than zero"
-    assert (
-        record_count < 51
-    ), "Number of sections to generate per course must be less then 51"
 
     result: Dict[Course, List[Section]] = {}
     for course in courses:

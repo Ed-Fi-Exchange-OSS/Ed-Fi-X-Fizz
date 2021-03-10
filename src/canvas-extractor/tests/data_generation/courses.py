@@ -82,10 +82,6 @@ def load_courses(account: Account, courses: List[Dict]) -> List[Course]:
     List[Course]
         A list of Canvas SDK Course objects representing the created courses
     """
-    assert (
-        len(courses) > 0 and len(courses) < 51
-    ), "Number of courses must be between 1 and 50"
-
     logger.info("Creating %s courses via Canvas API", len(courses))
 
     result: List[Course] = []

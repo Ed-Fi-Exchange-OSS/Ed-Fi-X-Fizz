@@ -85,10 +85,6 @@ def load_users(account: Account, users: List[Dict]) -> List[User]:
     List[User]
         A list of Canvas SDK User objects representing the created users
     """
-    assert (
-        len(users) > 0 and len(users) < 51
-    ), "Number of users must be between 1 and 50"
-
     logger.info("Creating %s users via Canvas API", len(users))
 
     result: List[User] = []

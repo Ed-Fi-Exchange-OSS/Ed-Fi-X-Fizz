@@ -81,10 +81,6 @@ def load_assignments(course: Course, assignments: List[Dict]) -> List[Assignment
     List[Assignment]
         A list of Canvas SDK Assignment objects representing the created assignments
     """
-    assert (
-        len(assignments) > 0 and len(assignments) < 51
-    ), "Number of assignments must be between 1 and 50"
-
     logger.info("Creating %s assignments via Canvas API", len(assignments))
 
     result: List[Assignment] = []

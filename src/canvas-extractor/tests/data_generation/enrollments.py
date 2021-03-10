@@ -53,10 +53,6 @@ def load_enrollments(course: Course, enrollments: List[Dict]) -> List[Enrollment
     List[Enrollment]
         A list of Canvas SDK Enrollment objects representing the created enrollments
     """
-    assert (
-        len(enrollments) > 0 and len(enrollments) < 51
-    ), "Number of enrollments must be between 1 and 50"
-
     logger.info("Creating %s enrollments via Canvas API", len(enrollments))
 
     result: List[Enrollment] = []
