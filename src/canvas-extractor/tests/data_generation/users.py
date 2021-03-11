@@ -4,6 +4,7 @@
 # See the LICENSE and NOTICES files in the project root for more information.
 
 import logging
+import time
 from canvasapi.account import Account
 from canvasapi.user import User
 from typing import Dict, List
@@ -35,11 +36,11 @@ def generate_users(record_count: int) -> List[Dict]:
     for i in range(1, record_count + 1):
         if i % 1000 == 0:
             logging.info(f"{i} users...")
-        user_name = fake.user_name()
+        email = fake.email()
         users.append(
             {
-                "unique_id": f"{user_name}@{fake.free_email_domain()}",
-                "sys_user_id": user_name,
+                "unique_id": email,
+                "sys_user_id": email,
             }
         )
     return users
@@ -89,9 +90,13 @@ def load_users(account: Account, users: List[Dict]) -> List[User]:
 
     result: List[User] = []
     for user in users:
-        result.append(account.create_user(user))
+        try:
+            result.append(account.create_user(user))
+        except Exception as ex:
+            logger.exception(ex)
+            time.sleep(10)
 
-    logger.info("Successfully created %s users", len(users))
+    logger.info("Successfully created %s users", len(result))
 
     return result
 
